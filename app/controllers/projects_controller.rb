@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource param_method: :project_params
 
   def index
     @projects = Project.includes(:owner)
@@ -42,9 +42,5 @@ class ProjectsController < ApplicationController
     
     def project_params
       params.require(:project).permit(:name)
-    end
-
-    def find_project
-      @project = Project.find(params[:id])
     end
 end
