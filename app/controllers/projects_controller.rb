@@ -1,11 +1,12 @@
 class ProjectsController < ApplicationController
 
+  before_action :find_project, only: [:show, :edit, :update, :destroy]
+
   def index
     @projects = Project.includes(:owner)
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def new
@@ -13,11 +14,10 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
   end
 
   def create
-    @project = current_user.projects.new(params.require(:project).permit(:name))
+    @project = current_user.projects.new(project_params)
     if @project.save
       redirect_to projects_path
     else
@@ -26,8 +26,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
-    if @project.update(params.require(:project).permit(:name))
+    if @project.update(project_params)
       redirect_to projects_path
     else
       render :edit
@@ -35,9 +34,17 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
   end
 
+  private
+    
+    def project_params
+      params.require(:project).permit(:name)
+    end
+
+    def find_project
+      @project = Project.find(params[:id])
+    end
 end
