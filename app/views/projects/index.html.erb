@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= Project.human_attribute_name(:name) %></th>
+      <th><%= Project.human_attribute_name(:owner) %></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= link_to p.name, project_path(p) %></td>
+        <td><%= p.owner.email %></td>
+        <td><%= link_to 'Edit', edit_project_path(p) %> | <%= link_to 'delete', project_path(p), method: :delete, data: { confirm: 'sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_project_path %>
