@@ -8,6 +8,7 @@ gem 'cancancan', '~> 1.7'
 
 #Simple form
 gem 'simple_form'
+gem "nested_form"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'

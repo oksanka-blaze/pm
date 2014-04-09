@@ -1,4 +1,12 @@
-<%= simple_form_for @project do |f| %>
+<%= simple_nested_form_for @project do |f| %>
   <%= f.input :name %>
+  <%= f.fields_for :tasks do |task_form| %>
+    <%= task_form.association :assignee, label_method: :email, value_method: :id %>
+    <%= task_form.input :name %>
+    <%= task_form.input :description, as: :text %>
+    <%= task_form.input :due_date %>
+    <%= task_form.link_to_remove "Remove this task" %>
+  <% end %>
+  <p><%= f.link_to_add "Add a task", :tasks %></p>
   <%= f.submit %>
 <% end %>

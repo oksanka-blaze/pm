@@ -41,6 +41,10 @@ class ProjectsController < ApplicationController
   private
     
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, tasks_attributes: task_params)
+    end
+
+    def task_params
+      [:id, :description, :due_date, :_destroy, :assignee_id, :name]
     end
 end

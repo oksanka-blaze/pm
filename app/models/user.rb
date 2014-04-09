@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :projects, foreign_key: :owner_id
-
+  has_many :tasks, foreign_key: :assignee_id
 end

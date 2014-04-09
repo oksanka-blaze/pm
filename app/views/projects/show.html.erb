@@ -1,1 +1,12 @@
-<b><%= @project.name %></b><%= @project.owner.email %>
+<h1> Project </h1>
+<b><%= @project.name %></b>
+<p><%= @project.owner.email %></p>
+<h1> Tasks </h1>
+<% @project.tasks.each do |task| %>
+  <%= task.name %>
+  <%= task.description %>
+  <%= task.due_date %>
+  <%= task.assignee.email %>
+<% end %>
+
+<%= link_to 'All projects', projects_path %>
