@@ -1,4 +1,4 @@
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th><%= Project.human_attribute_name(:name) %></th>
@@ -24,4 +24,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New', new_project_path %>
+<%= link_to 'New', new_project_path, class: 'btn' %>

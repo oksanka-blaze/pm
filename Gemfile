@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "twitter-bootstrap-rails"
+
 #Authentication
 gem 'devise'
 
