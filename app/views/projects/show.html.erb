@@ -5,10 +5,10 @@
 <table class='table'>
   <% @project.tasks.each do |task| %>
     <tr>
-      <td><%= task.name %></td>
+      <td><%= task.title %></td>
       <td><%= task.description %></td>
       <td><%= task.due_date %></td>
-      <td><%= task.assignee.email %></td>
+      <td><%= task.assignee_email %></td>
     </tr>
   <% end %>
 </table>

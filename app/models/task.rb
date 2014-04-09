@@ -4,4 +4,7 @@ class Task < ActiveRecord::Base
 
   validates_presence_of :name, :description
 
+  delegate :email, to: :assignee, prefix: true, allow_nil: true
+
+  alias_attribute :title, :name
 end
