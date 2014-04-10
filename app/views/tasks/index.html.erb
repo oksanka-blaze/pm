@@ -6,6 +6,7 @@
       <td><%= task.description %></td>
       <td><%= task.due_date %></td>
       <td><%= task.assignee_email %></td>
+      <td><%= link_to 'assign to me', assign_task_path(task), method: :patch %></td>
     </tr>
   <% end %>
 </table>

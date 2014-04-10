@@ -1,6 +1,12 @@
 class TasksController < ApplicationController
 
-  before_action :find_project
+  before_action :find_project, except: [:assign]
+
+  def assign
+    @task = Task.find(params[:id])
+    @task.update_column(:assignee_id, current_user.id)
+    redirect_to project_tasks_path(@task.project)
+  end
 
   def index
     @tasks = @project.tasks

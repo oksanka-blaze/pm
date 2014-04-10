@@ -41,6 +41,18 @@ describe TasksController do
       
     end
 
+    describe "PATCH #assign" do
+      it "assigns the task assignee to current_user" do
+        patch :assign, id: subject.id
+        expect(subject.reload.assignee).to eq(user) 
+      end
+      
+      it "redirects to tasks" do
+        patch :assign, id: subject.id
+        expect(response).to redirect_to project_tasks_path(subject.project)
+      end
+    end
+
     describe "POST #create" do
       context "with valid attributes" do
         it "creates new object" do
