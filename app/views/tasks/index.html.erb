@@ -1,0 +1,16 @@
+<h1> Tasks </h1>
+<table class='table'>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.description %></td>
+      <td><%= task.due_date %></td>
+      <td><%= task.assignee_email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Create new task', new_project_task_path(@project), class: 'btn' %>
+<p>
+<%= link_to 'Go to projects page', projects_path %>
+</p>

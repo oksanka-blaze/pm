@@ -1,0 +1,7 @@
+<%= simple_nested_form_for [@project, @task] do |f| %>
+  <%= f.association :assignee, label_method: :email, value_method: :id %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :due_date %>
+  <%= f.submit %>
+<% end %>

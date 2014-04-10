@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :assignee, factory: :user
     association :project
     due_date { 2.hours.from_now }
-    name { Faker::Lorem.words(3) }
+    name { Faker::Lorem.words(3).join(' ') }
     description { Faker::Lorem.paragraph }
   end
 end
