@@ -1,7 +1,7 @@
 local: &local
   adapter: postgresql
-  username: oksana
-  password: pswd 
+  username: postgres
+  password:
   host: localhost
 
 development:
